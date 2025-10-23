@@ -1,0 +1,144 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		28A53B8F2B8B4C0F001A9C8C /* RuthApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A53B8E2B8B4C0F001A9C8C /* RuthApp.swift */; };
+		28A53B912B8B4C0F001A9C8C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A53B902B8B4C0F001A9C8C /* ContentView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		28A53B8B2B8B4C0F001A9C8C /* Ruth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ruth.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		28A53B8E2B8B4C0F001A9C8C /* RuthApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RuthApp.swift; sourceTree = "<group>"; };
+		28A53B902B8B4C0F001A9C8C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		28A53B852B8B4C0F001A9C8C = {
+			isa = PBXGroup;
+			children = (
+				28A53B8D2B8B4C0F001A9C8C /* Ruth */,
+				28A53B8C2B8B4C0F001A9C8C /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		28A53B8C2B8B4C0F001A9C8C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				28A53B8B2B8B4C0F001A9C8C /* Ruth.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		28A53B8D2B8B4C0F001A9C8C /* Ruth */ = {
+			isa = PBXGroup;
+			children = (
+				28A53B8E2B8B4C0F001A9C8C /* RuthApp.swift */,
+				28A53B902B8B4C0F001A9C8C /* ContentView.swift */,
+			);
+			path = Ruth;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		28A53B8A2B8B4C0F001A9C8C /* Ruth */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 28A53B942B8B4C0F001A9C8C /* Build configuration list for PBXNativeTarget "Ruth" */;
+			buildPhases = (
+				28A53B872B8B4C0F001A9C8C /* Sources */,
+				28A53B882B8B4C0F001A9C8C /* Frameworks */,
+				28A53B892B8B4C0F001A9C8C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Ruth;
+			productName = Ruth;
+			productReference = 28A53B8B2B8B4C0F001A9C8C /* Ruth.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		28A53B862B8B4C0F001A9C8C /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				TargetAttributes = {
+					28A53B8A2B8B4C0F001A9C8C = {
+						CreatedOnToolsVersion = 13.2;
+					};
+				};
+			};
+			buildConfigurationList = 28A53B922B8B4C0F001A9C8C /* Build configuration list for PBXProject "Ruth" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 28A53B852B8B4C0F001A9C8C;
+			productRefGroup = 28A53B8C2B8B4C0F001A9C8C /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				28A53B8A2B8B4C0F001A9C8C /* Ruth */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		28A53B872B8B4C0F001A9C8C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				28A53B912B8B4C0F001A9C8C /* ContentView.swift in Sources */,
+				28A53B8F2B8B4C0F001A9C8C /* RuthApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		28A53B932B8B4C0F001A9C8C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.example.Ruth";
+				PRODUCT_NAME = "$(PRODUCT_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		28A53B922B8B4C0F001A9C8C /* Build configuration list for PBXProject "Ruth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28A53B932B8B4C0F001A9C8C /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		28A53B942B8B4C0F001A9C8C /* Build configuration list for PBXNativeTarget "Ruth" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				28A53B932B8B4C0F001A9C8C /* Debug */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 28A53B862B8B4C0F001A9C8C /* Project object */;
+}
