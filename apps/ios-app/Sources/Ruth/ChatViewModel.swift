@@ -2,11 +2,11 @@ import Foundation
 import SwiftUI
 
 /// Represents a single message in the chat.
-struct ChatMessage: Identifiable {
+struct ChatMessage: Identifiable, Equatable {
     let id = UUID()
-    let text: String
+    var text: String
     let isFromUser: Bool
-    let routeDecision: RouteDecision?
+    var routeDecision: RouteDecision?
 }
 
 /// Manages the state and logic for the chat view.
@@ -14,7 +14,7 @@ struct ChatMessage: Identifiable {
 class ChatViewModel: ObservableObject {
     @Published var messages: [ChatMessage] = []
     @Published var inputText: String = ""
-    @Published var isGenerating: Bool = false
+    @Published var engineState: MLCEngine.State = .idle
 
     private let router = Router()
     private let llmEngine = MLCEngine()
@@ -22,6 +22,9 @@ class ChatViewModel: ObservableObject {
     init() {
         // Add an initial welcome message.
         messages.append(ChatMessage(text: "Hello! I'm Ruth. How can I help you today?", isFromUser: false, routeDecision: .local))
+
+        // Observe the state of the LLM engine.
+        llmEngine.$state.assign(to: &$engineState)
     }
 
     /// Sends the user's message and generates a response.
@@ -32,7 +35,6 @@ class ChatViewModel: ObservableObject {
         messages.append(userMessage)
         let prompt = inputText
         inputText = ""
-        isGenerating = true
 
         Task {
             let decision = router.decideRoute(for: prompt)
@@ -44,14 +46,13 @@ class ChatViewModel: ObservableObject {
                 messages.append(responseMessage)
 
                 await llmEngine.generateResponse(for: prompt) { partialResponse in
-                    self.messages[responseIndex] = ChatMessage(text: partialResponse, isFromUser: false, routeDecision: .local)
+                    // Update the message in place to show the streaming response
+                    self.messages[responseIndex].text = partialResponse
                 }
             case .cloud(let reason):
                 let responseMessage = ChatMessage(text: "This request will be sent to the cloud. Reason: \(reason)", isFromUser: false, routeDecision: decision)
                 messages.append(responseMessage)
             }
-
-            isGenerating = false
         }
     }
 }

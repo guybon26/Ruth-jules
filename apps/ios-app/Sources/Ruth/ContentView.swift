@@ -16,31 +16,47 @@ struct ContentView: View {
                     }
                 }
                 .onChange(of: viewModel.messages.count) { _ in
-                    // Scroll to the bottom when a new message is added
-                    if let lastMessage = viewModel.messages.last {
-                        withAnimation {
-                            scrollViewProxy.scrollTo(lastMessage.id, anchor: .bottom)
-                        }
-                    }
+                    scrollToBottom(scrollViewProxy)
                 }
+                .onChange(of: viewModel.messages.last?.text) { _ in
+                    scrollToBottom(scrollViewProxy)
+                }
+            }
+
+            // Engine state indicator
+            if case .loadingModel = viewModel.engineState {
+                ProgressView("Loading Model...")
+                    .padding()
+            } else if case .failed(let error) = viewModel.engineState {
+                Text("Error: \(error.localizedDescription)")
+                    .foregroundColor(.red)
+                    .padding()
             }
 
             // Input area
             HStack {
                 TextField("Ask Ruth...", text: $viewModel.inputText)
                     .textFieldStyle(.roundedBorder)
-                    .disabled(viewModel.isGenerating)
+                    .disabled(viewModel.engineState != .idle)
 
                 Button(action: {
                     viewModel.sendMessage()
                 }) {
                     Image(systemName: "paperplane.fill")
                 }
-                .disabled(viewModel.inputText.isEmpty || viewModel.isGenerating)
+                .disabled(viewModel.inputText.isEmpty || viewModel.engineState != .idle)
             }
             .padding()
         }
         .navigationTitle("Ruth")
+    }
+
+    private func scrollToBottom(_ proxy: ScrollViewProxy) {
+        if let lastMessage = viewModel.messages.last {
+            withAnimation {
+                proxy.scrollTo(lastMessage.id, anchor: .bottom)
+            }
+        }
     }
 }
 
@@ -59,7 +75,7 @@ struct MessageView: View {
                     .cornerRadius(10)
             } else {
                 VStack(alignment: .leading, spacing: 4) {
-                    Text(message.text)
+                    Text(message.text.isEmpty ? "..." : message.text)
                         .padding(10)
                         .background(Color.gray.opacity(0.2))
                         .cornerRadius(10)
