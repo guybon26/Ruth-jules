@@ -1,0 +1,3 @@
+fastapi
+uvicorn
+# Add ONNX runtime and other dependencies here later

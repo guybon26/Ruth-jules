@@ -1,0 +1,40 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "local-llm:build",
+      "type": "shell",
+      "command": "cd llama.cpp && make -j"
+    },
+    {
+      "label": "local-llm:serve",
+      "type": "shell",
+      "command": "./llama.cpp/server -m models/Phi-3-mini-4k-instruct.gguf -c 4096 -ngl 999 --port 8080"
+    },
+    {
+      "label": "redactor:dev",
+      "type": "shell",
+      "command": "uvicorn services.redactor.main:app --reload --port 8082"
+    },
+    {
+      "label": "router:dev",
+      "type": "shell",
+      "command": "uvicorn services.router.main:app --reload --port 8081"
+    },
+    {
+      "label": "cloud-proxy:dev",
+      "type": "shell",
+      "command": "uvicorn services.cloud_proxy.main:app --reload --port 8083"
+    },
+    {
+      "label": "ui:dev",
+      "type": "shell",
+      "command": "cd apps/desktop-ui && pnpm dev"
+    },
+    {
+      "label": "all:up",
+      "type": "shell",
+      "command": "docker-compose -f infra/docker/docker-compose.yml up --build"
+    }
+  ]
+}

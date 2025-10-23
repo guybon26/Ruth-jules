@@ -1,0 +1,21 @@
+{
+  "name": "ruth-desktop-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Desktop UI for Ruth, a hybrid edge-first personal assistant.",
+  "author": "",
+  "main": "electron/main.js",
+  "scripts": {
+    "dev": "echo \"UI dev server not implemented. See .vscode/tasks.json\"",
+    "build": "echo \"UI build not implemented.\"",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "electron": "^29.1.5",
+    "vite": "^5.2.8"
+  }
+}

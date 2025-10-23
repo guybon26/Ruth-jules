@@ -1,0 +1,3 @@
+fastapi
+uvicorn
+# Add cloud provider SDKs (e.g., openai, google-cloud-aiplatform) here later

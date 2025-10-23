@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  router:
+    build:
+      context: ../../services/router
+      dockerfile: Dockerfile
+    ports:
+      - "8081:8081"
+    volumes:
+      - ../../services/router:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8081 --reload
+
+  redactor:
+    build:
+      context: ../../services/redactor
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    volumes:
+      - ../../services/redactor:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8082 --reload
+
+  cloud-proxy:
+    build:
+      context: ../../services/cloud-proxy
+      dockerfile: Dockerfile
+    ports:
+      - "8083:8083"
+    volumes:
+      - ../../services/cloud-proxy:/app
+    command: uvicorn main:app --host 0.0.0.0 --port 8083 --reload
+
+  local-llm:
+    # This service is intended to be run locally using a pre-built llama.cpp binary.
+    # The docker-compose setup for this service is for orchestration purposes,
+    # and assumes you have llama.cpp built and the model downloaded.
+    image: ghcr.io/ggerganov/llama.cpp:server
+    ports:
+      - "8080:8080"
+    volumes:
+      - ../../models:/models
+    command: -m /models/Phi-3-mini-4k-instruct.gguf -c 4096 -ngl 999 --host 0.0.0.0 --port 8080

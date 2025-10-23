@@ -1,0 +1,61 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Router",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "services.router.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8081"
+      ],
+      "jinja": true
+    },
+    {
+      "name": "Debug Redactor",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "services.redactor.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8082"
+      ],
+      "jinja": true
+    },
+    {
+      "name": "Debug Cloud Proxy",
+      "type": "python",
+      "request": "launch",
+      "module": "uvicorn",
+      "args": [
+        "services.cloud_proxy.main:app",
+        "--host",
+        "127.0.0.1",
+        "--port",
+        "8083"
+      ],
+      "jinja": true
+    },
+    {
+      "name": "Debug Electron Main",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/apps/desktop-ui",
+      "runtimeExecutable": "${workspaceFolder}/apps/desktop-ui/node_modules/.bin/electron",
+      "windows": {
+        "runtimeExecutable": "${workspaceFolder}/apps/desktop-ui/node_modules/.bin/electron.cmd"
+      },
+      "args": [
+        "."
+      ],
+      "outputCapture": "std"
+    }
+  ]
+}
